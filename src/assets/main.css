@@ -1,0 +1,184 @@
+/* ==========================================================================
+   SIMBA LOGISTICS — Design tokens & styles globaux
+   Palette : bleu marine profond + or, sur fond clair "brume".
+   Signature visuelle : la "route" pointillée Chine → Togo, reprise dans
+   le hero et dans la section des 5 étapes (les repères numérotés y ont
+   un sens réel : ce sont les étapes chronologiques d'un envoi).
+   ========================================================================== */
+
+:root {
+  /* Couleurs de marque */
+  --color-navy: #0B2545;
+  --color-navy-light: #13315C;
+  --color-navy-soft: #1F3E68;
+  --color-gold: #C9A227;
+  --color-gold-light: #E8C766;
+  --color-white: #FFFFFF;
+  --color-mist: #F4F7FB;
+  --color-mist-dark: #E6ECF4;
+  --color-ink: #1A2233;
+  --color-ink-soft: #4B5668;
+  --color-success: #2E7D5B;
+  --color-success-bg: #E4F3EC;
+  --color-pending: #C97A2B;
+  --color-pending-bg: #FBF0E2;
+  --color-info: #2B6CB0;
+  --color-info-bg: #E7F0FB;
+
+  /* Typographie */
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Rayon / ombres */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 10px 30px rgba(11, 37, 69, 0.08);
+  --shadow-card-hover: 0 16px 40px rgba(11, 37, 69, 0.14);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-mist);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+}
+
+p { line-height: 1.65; margin: 0 0 1em; color: var(--color-ink-soft); }
+a { color: inherit; }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  color: var(--color-navy);
+  box-shadow: 0 8px 20px rgba(201, 162, 39, 0.35);
+}
+.btn--gold:hover { box-shadow: 0 10px 26px rgba(201, 162, 39, 0.45); background:#000000;color: var(--color-white);}
+
+.btn--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+.btn--navy:hover { background: var(--color-navy-light); }
+
+.btn--ghost {
+  background: transparent;
+  border-color: rgba(255,255,255,0.35);
+  color: var(--color-white);
+}
+.btn--ghost:hover { border-color: var(--color-gold-light); color: var(--color-gold-light); }
+
+.btn--outline-navy {
+  background: #C9A227;
+  border-color: #cecece;
+  color: #f0f0f0;
+}
+.btn--outline-navy:hover { background: var(--color-navy); color: var(--color-white); }
+
+.btn--block { width: 100%; }
+.btn--lg { padding: 1rem 2rem; font-size: 1.02rem; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ---------- Cartes ---------- */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem;
+}
+
+/* ---------- Badges de statut (colis) ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.badge--pending { background: var(--color-pending-bg); color: var(--color-pending); }
+.badge--received { background: var(--color-info-bg); color: var(--color-info); }
+.badge--consolidated { background: var(--color-success-bg); color: var(--color-success); }
+
+/* ---------- Champs de formulaire ---------- */
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.1rem; }
+.field label { font-size: 0.85rem; font-weight: 600; color: var(--color-navy); }
+.field input {
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-mist-dark);
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  background: var(--color-white);
+  transition: border-color 0.15s ease;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+.field input:focus-visible { box-shadow: 0 0 0 3px rgba(201,162,39,0.25); }
+
+.form-error {
+  background: var(--color-pending-bg);
+  color: var(--color-pending);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.form-success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Focus clavier visible partout (accessibilité) */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
